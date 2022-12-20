@@ -107,18 +107,15 @@ def fr(operation:str):
     frDateFormatted = (f'{frDate}.txt')
     if frDateFormatted in frGFL:
         
-        print('date correct')
+        print('date real')
         frFindFile = open((f'database/{frDate}.txt'), 'r')
         frFileFound = frFindFile.read()
         frFindFile.close()
-        print(frFileFound)
         frFileManipulate = eval(frFileFound)
         frFileLength = frFileFound.split('\n', -1)
         if len(frFileLength) ==1:
             print(f'1 game found for {frDate}')
-            print(frFileManipulate)
             del frFileManipulate[2]
-            print(frFileManipulate)
 
             frDataToPrint = [
                 [frFileManipulate[0][1], frFileManipulate[0][0]],
@@ -135,27 +132,17 @@ def fr(operation:str):
             ]
 
             for i in range(0, (len(frFileLength))):
-                print('length', (len(frFileLength)))
-                print(i)
                 frPlayer1 = frFileManipulate[0][0][1]
                 frPlayer2 = frFileManipulate[0][1][1]
                 frTableHeadings.append(f'Game {i+1}')
-                frPlayer1Scores = []
-                frPlayer2Scores = []
                 
                 for score in range(0, len(frFileLength)):
                     if frFileManipulate[i][score][1] == frPlayer1:
-                        frPlayer1Scores.append(frFileManipulate[i][score][0])
-                        print(frPlayer1)
-                        print(frPlayer1Scores)
+                        frDataToPrint[0].append(frFileManipulate[i][score][0])
                     elif frFileManipulate[i][score][1] == frPlayer2:
-                        frPlayer2Scores.append(frFileManipulate[i][score][0])
-                        print(frPlayer2)
-                        print(frPlayer2Scores)
+                        frDataToPrint[1].append(frFileManipulate[i][score][0])
                     else:
                         print('error')
-                (frDataToPrint[0]).append(frPlayer1Scores[i])
-                (frDataToPrint[1]).append(frPlayer2Scores[i])
 
             frData3DArrayToPrintFormat = tabulate(frDataToPrint, headers=frTableHeadings)
             print(frData3DArrayToPrintFormat)
