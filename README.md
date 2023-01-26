@@ -1,4 +1,4 @@
-# FOOSBALL RESULTS PLATFORM #
+# FOOTBALL RESULTS PLATFORM #
 
 Foosball Results Platform is a Lightweight easy-to-use platform which allows the storage of game results that are in the format 9-1, like football. It stores data in a hierarchy of text files, with an indexing file. The core language and funcctionality version 1 has just been released (20/12/2022), with a function for searching for results and creating new results. They are indexed by date.
 
